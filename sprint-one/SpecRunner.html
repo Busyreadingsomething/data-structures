@@ -9,7 +9,7 @@
         padding: 0;
       }
       iframe {
-        width: 20%;
+        width: 20%; /* 20% is original use 50%*/
         border-width: 0;
       }
     </style>
@@ -20,6 +20,9 @@
         $.each(['functional', 'functional-shared', 'prototypal', 'pseudoclassical', 'es6'], function(i, variant) {
           $('<iframe src="' + window.location.toString().replace('.html', 'Section.html?') + variant + '" />').appendTo(document.body);
         });
+        // $.each(['functional-shared'], function(i, variant) {
+        //   $('<iframe src="' + window.location.toString().replace('.html', 'Section.html?') + variant + '" />').appendTo(document.body);
+        // });
 
         $(window).resize(function() {
           $('iframe').height($(this).height());

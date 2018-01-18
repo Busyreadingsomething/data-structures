@@ -25,7 +25,7 @@ stackMethods.push = function(value) {
 };
 
 stackMethods.pop = function() {
-  // find sI len as key
+  // find sI len - 1 as key
   var key = this.len - 1;
   // set deleted var to storage[key]
   var deleted = this.storage[key];

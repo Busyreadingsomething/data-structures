@@ -13,13 +13,13 @@ var Graph = function() {
   return graph;
 };
 
-// Add a node to the graph, passing in the node's value.
+// Add a node to the graph, passing in the node's IDENTIFIER.
 Graph.prototype.addNode = function(node) {
   this.nodes.push(node);
   this.edge[node] = [];
 };
 
-// Return a boolean value indicating if the value passed to contains is represented in the graph.
+// Return a boolean value indicating if the IDENTIFIER passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
   for (var i = 0; i < this.nodes.length; i++) {
     if (node === this.nodes[i]) {
@@ -31,7 +31,7 @@ Graph.prototype.contains = function(node) {
 
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  debugger;
+  // debugger;
   for (var i = 0; i < this.nodes.length; i++) {
     var connection = this.nodes[i];
     if (node === connection) {
@@ -71,6 +71,11 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  for (var i = 0; i < this.nodes.length; i++) {
+    cb(this.nodes[i]);
+  }
+  // loop through this nodes
+    // invoke cb on nodes[i];
 };
 
 /*

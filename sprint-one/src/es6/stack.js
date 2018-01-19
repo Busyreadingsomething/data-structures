@@ -33,8 +33,6 @@ class Stack {
     // return deleted
   }
 
-  size() {
-    return this.len;
-  }
+  size() => this.len;
 
 }

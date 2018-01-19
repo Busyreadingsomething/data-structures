@@ -10,7 +10,6 @@ var BinarySearchTree = function(val) {
 };
 
 BinarySearchTree.prototype.insert = function(val) {
-  debugger;
   var node = BinarySearchTree(val);
   var search = function (obj) {
     if (obj.value > val) {
@@ -37,12 +36,46 @@ BinarySearchTree.prototype.insert = function(val) {
       // if not - recurse with right
 };
 
-BinarySearchTree.prototype.contains = function(value) {
-
+BinarySearchTree.prototype.contains = function(target) {
+  var search = function(obj) {
+    if (obj.value === target) {
+      return true;
+    } else if (obj.value > target && obj.left !== null) {
+      return search(obj.left);
+    } else if (obj.value < target && obj.right !== null) {
+      return search(obj.right);
+    } else {
+      return false;
+    }
+  };
+  return search(this);
+  // return search function - parameter obj
+    // if obj value is target
+      // return true
+    // else if target < obj value and if obj left isn't null
+      // return recurse of search on obj left
+    // else if target > obj value and if obj right isn't null
+      // return recurse of search on obj right
+    // else return false
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
-
+  var search = function(obj) {
+    cb(obj.value);
+    if (obj.left !== null) {
+      search(obj.left);
+    }
+    if (obj.right !== null) {
+      search(obj.right);
+    }
+  };
+  search(this);
+  // create search funtion - parameter obj
+    //pass obj into cb function
+    // determine if obj.left is null
+      // if not null, call search function on obj.left
+    // determine if obj.right is null
+      // if not null, call search function on obj.right
 }
 /*
  * Complexity: What is the time complexity of the above functions?

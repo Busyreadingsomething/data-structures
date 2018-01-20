@@ -28,7 +28,7 @@ HashTable.prototype.insert = function(k, v) {
     bucket.push(tuple);
   }
   this._count++;
-  if (this.ratio() > 0.75) {
+  if (this.ratio() >= 0.75) {
     this.resize();
   }
   // var tuple is k with v
@@ -101,7 +101,7 @@ HashTable.prototype.resize = function() {
     }
   }
 
-  if (this.ratio() > 0.75) {
+  if (this.ratio() >= 0.75) {
     this._limit = this._limit * 2;
   } else if (this.ratio() < 0.25) {
     this._limit = Math.floor(this._limit / 2);

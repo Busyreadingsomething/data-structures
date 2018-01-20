@@ -7,10 +7,18 @@ describe('hashTable', function() {
     hashTable = new HashTable();
   });
 
-  it('should have methods named "insert", "remove", and "retrieve', function() {
+  it('should have methods named "insert", "remove", "retrieve", "ratio", and "resize"', function() {
     expect(hashTable.insert).to.be.a('function');
     expect(hashTable.remove).to.be.a('function');
     expect(hashTable.retrieve).to.be.a('function');
+    expect(hashTable.ratio).to.be.a('function');
+    expect(hashTable.resize).to.be.a('function');
+  });
+
+  it('should have properties for limit, storage, and count', function() {
+    expect(hashTable).to.have.property('_limit');
+    expect(hashTable).to.have.property('_storage');
+    expect(hashTable).to.have.property('_count');
   });
 
   it('should store values that were inserted', function() {
@@ -73,4 +81,15 @@ describe('hashTable', function() {
     hashTable.remove('Mr.');
     expect(hashTable._limit).to.equal(8);
   });
+ 
+  it ('should reject key inputs that are not string', function() {
+    expect(hashTable.remove({})).to.equal('Invalid key');
+    expect(hashTable.remove(true)).to.equal('Invalid key');
+    expect(hashTable.retrieve(1)).to.equal('Invalid key');
+    expect(hashTable.retrieve([])).to.equal('Invalid key');
+    expect(hashTable.insert(undefined, 1)).to.equal('Invalid key');
+    expect(hashTable.insert(null, 1)).to.equal('Invalid key');
+    expect(hashTable.insert(function test() {}, 1)).to.equal('Invalid key');
+  });
+
 });

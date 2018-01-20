@@ -18,7 +18,7 @@ setPrototype.add = function(item) {
 
 setPrototype.contains = function(item) {
   for (let i = 0; i < this._storage.length; i++) {
-    if (this._storage[i] === item) {
+    if (JSON.stringify(this._storage[i]) === JSON.stringify(item)) {
       return true;
     }
   }
@@ -31,7 +31,7 @@ setPrototype.contains = function(item) {
 
 setPrototype.remove = function(item) {
   for (let i = 0; i < this._storage.length; i++) {
-    if (this._storage[i] === item) {
+    if (JSON.stringify(this._storage[i]) === JSON.stringify(item)) {
       this._storage.splice(i, 1);
     }
   }

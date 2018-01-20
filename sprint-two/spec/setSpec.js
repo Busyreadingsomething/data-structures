@@ -33,4 +33,14 @@ describe('set', function() {
     expect(set.add('Mel Gibson')).to.equal('Already in set');
   });
 
+  it('should handle any sort of data type', function() {
+    var types = [{}, [], 1, true, null, undefined, function() {}];
+    for (var i = 0; i < types.length; i++) {
+      set.add(types[i]);
+      expect(set.contains(types[i])).to.equal(true);
+      set.remove(types[i]);
+      expect(set.contains(types[i])).to.equal(false);  
+    }
+  });
+
 });

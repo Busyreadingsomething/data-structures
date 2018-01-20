@@ -1,4 +1,4 @@
- 
+  
 
 var HashTable = function() {
   this._limit = 8;
@@ -7,6 +7,9 @@ var HashTable = function() {
 };
 
 HashTable.prototype.insert = function(k, v) {
+  if (typeof k !== 'string') {
+    return 'Invalid key';
+  }
   var index = getIndexBelowMaxForKey(k, this._limit);
   // this storage at set passing in index, and v
   var tuple = [k, v];
@@ -38,6 +41,9 @@ HashTable.prototype.insert = function(k, v) {
 };
 
 HashTable.prototype.retrieve = function(k) {
+  if (typeof k !== 'string') {
+    return 'Invalid key';
+  }
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
   if (bucket !== undefined) {
@@ -55,7 +61,9 @@ HashTable.prototype.retrieve = function(k) {
 };
 
 HashTable.prototype.remove = function(k) {
-  // debugger
+  if (typeof k !== 'string') {
+    return 'Invalid key';
+  }
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
   if (bucket !== undefined) {

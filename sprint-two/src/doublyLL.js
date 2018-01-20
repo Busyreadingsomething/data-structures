@@ -39,6 +39,16 @@ var DoubleLinkedList = function() {
 
   };
 
+  list.removeTail = function() {
+    var holder = list.tail;
+    list.tail = list.tail.prev;
+    list.tail.next = null;
+    return holder.value;
+    // set holder to tail
+    // set tail to tail.prev
+    // tail next to null
+  };
+
   list.contains = function(target) {
     // debugger;
     var res = false;

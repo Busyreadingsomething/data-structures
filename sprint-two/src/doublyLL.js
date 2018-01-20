@@ -32,17 +32,28 @@ var DoubleLinkedList = function() {
   };
 
   list.removeHead = function() {
+    // debugger;
     var holder = list.head;
-    list.head = list.head.next;
-    list.head.prev = null;
+    if (list.head === list.tail) {
+      list.head = null;
+      list.tail = null;
+    } else {
+      list.head = list.head.next;
+      list.head.prev = null;
+    }
     return holder.value;
 
   };
 
   list.removeTail = function() {
     var holder = list.tail;
-    list.tail = list.tail.prev;
-    list.tail.next = null;
+    if (list.head === list.tail) {
+      list.head = null;
+      list.tail = null;
+    } else {
+      list.tail = list.tail.prev;
+      list.tail.next = null;
+    }
     return holder.value;
     // set holder to tail
     // set tail to tail.prev

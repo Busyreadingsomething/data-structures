@@ -61,6 +61,32 @@ treeMethods.removeFromParent = function () {
   //get index for this in holder's children
   //splice holder's children at index
   //set this parent to null
+};
+
+treeMethods.traverse = function(cb) {
+  var base;
+  debugger;
+  var findParent = function (node) {
+    if (node.parent !== null) {
+      findParent(node.parent);
+    } else {
+      base = node;
+    }
+  };
+  findParent(this);
+  console.log(base);
+  // declare a parent var equal to undefined
+  // create a find parent function taking parameter node
+    // if this.parent !== null 
+      // recurse find function passing in this.parent
+    // else
+      // set parent to this
+  // invoke find parent with this
+  // create an implementCallBack function passing in parent variable
+    // cb on this value
+    // if children array .length is !== 0
+      //for each child invoke implementCallBack
+
 }
 
 

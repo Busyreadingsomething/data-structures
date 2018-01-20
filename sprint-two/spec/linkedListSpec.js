@@ -51,5 +51,29 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should have head and tail equal same node if only 1 node exists', function() {
+    linkedList.addToTail(4);
+    expect(linkedList.head).to.equal(linkedList.tail);
+    linkedList.addToTail(5);
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(linkedList.tail);
+  });
+
+  it('should have newly created node\'s next property equal null', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(2);
+    linkedList.addToTail(3);
+    linkedList.addToTail(6);
+    linkedList.addToTail(1);
+    expect(linkedList.tail.next).to.equal(null);
+  });
+
+  it('should have node\'s next property to properly equal next node', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(2);
+    expect(linkedList.head.next).to.equal(linkedList.tail);
+  });
+
   // add more tests here to test the functionality of linkedList
 });
+ 

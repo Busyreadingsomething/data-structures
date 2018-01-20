@@ -9,6 +9,8 @@ var setPrototype = {};
 setPrototype.add = function(item) {
   if (!this.contains(item)) {
     this._storage.push(item);
+  } else {
+    return 'Already in set';
   }
   // if doesn't contain item
     // push item to storage

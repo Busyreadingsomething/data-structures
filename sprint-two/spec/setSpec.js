@@ -11,6 +11,10 @@ describe('set', function() {
     expect(set.remove).to.be.a('function');
   });
 
+  it('should have a storage property', function() {
+    expect(set).to.have.property('_storage');
+  });
+
   it('should add values to a set', function() {
     set.add('Susan Sarandon');
     set.add('Danny Glover');
@@ -22,6 +26,11 @@ describe('set', function() {
     set.add('Mel Gibson');
     set.remove('Mel Gibson');
     expect(set.contains('Mel Gibson')).to.equal(false);
+  });
+
+  it('should not add duplicate items', function() {
+    set.add('Mel Gibson');
+    expect(set.add('Mel Gibson')).to.equal('Already in set');
   });
 
 });

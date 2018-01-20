@@ -1,7 +1,7 @@
 var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
-
+ 
   // your code here
   newTree.children = [];  // fix me
   newTree.parent = null;
@@ -55,6 +55,8 @@ treeMethods.removeFromParent = function () {
   var index = holder.children.indexOf(this);
   holder.children.splice(index, 1);
   this.parent = null;
+  return this;
+  
   //create holder set to this.parent
   //get index for this in holder's children
   //splice holder's children at index

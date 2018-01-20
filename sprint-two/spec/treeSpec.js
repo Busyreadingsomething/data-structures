@@ -41,4 +41,29 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should correctly assign parent to children', function() {
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    expect(tree.children[0].parent).to.equal(tree);
+    expect(tree.children[1].parent).to.equal(tree);  
+    expect(tree.children[0].children[0].parent).to.equal(tree.children[0]);
+    expect(tree.children[1].children[0].parent).to.equal(tree.children[1]);
+  });
+
+  it('should disassociate the tree with its parent in both directions', function() {
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    tree.children[1].addChild(8);
+    tree.children[1].addChild(4);
+    var birch = tree.children[1].removeFromParent();
+    expect(tree.contains(6)).to.equal(false);
+    expect(tree.contains(8)).to.equal(false);
+    expect(birch.parent).to.equal(null);
+
+    
+  });
+
 });

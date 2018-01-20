@@ -37,4 +37,22 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should indicate if the value is already in the tree', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    expect(binarySearchTree.insert(7)).to.equal('Value already in tree');
+  });
+
+  it('should indicate if value is not a number', function() {
+    expect(binarySearchTree.insert('a')).to.equal('Invalid Input: Should be number');
+    expect(binarySearchTree.insert(true)).to.equal('Invalid Input: Should be number');
+    expect(binarySearchTree.insert([])).to.equal('Invalid Input: Should be number');
+    expect(binarySearchTree.insert({})).to.equal('Invalid Input: Should be number');
+    expect(binarySearchTree.insert(null)).to.equal('Invalid Input: Should be number');
+    expect(binarySearchTree.insert(undefined)).to.equal('Invalid Input: Should be number');
+    expect(binarySearchTree.insert(function test() {})).to.equal('Invalid Input: Should be number');
+  });
 });
+ 

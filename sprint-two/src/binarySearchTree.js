@@ -10,23 +10,32 @@ var BinarySearchTree = function(val) {
 };
 
 BinarySearchTree.prototype.insert = function(val) {
+  // debugger;
+  if (typeof val !== 'number') {
+    return 'Invalid Input: Should be number';
+  }
+  
   var node = BinarySearchTree(val);
   var search = function (obj) {
     if (obj.value > val) {
       if (obj.left === null) {
         obj.left = node;
+      } else if (obj.left.value === val) { 
+        return 'Value already in tree';
       } else {
-        search(obj.left);
+        return search(obj.left);
       }
-    } else {
+    } else if (obj.value < val) {
       if (obj.right === null) {
         obj.right = node;
+      } else if (obj.right.value === val) { 
+        return 'Value already in tree';
       } else {
-        search(obj.right);
+        return search(obj.right);
       }
     }
   };
-  search(this);
+  return search(this);
   // check to see if value is larger than this.val
     // if smaller 
       // if left is null - insert to left

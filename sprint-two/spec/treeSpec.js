@@ -84,8 +84,4 @@ describe('tree', function() {
     expect(test[0]).to.equal(tree.value);
     expect(JSON.stringify(test)).to.equal(JSON.stringify(expected));
   });
-
-
-
-
 });

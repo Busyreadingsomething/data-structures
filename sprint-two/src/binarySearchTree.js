@@ -86,6 +86,23 @@ BinarySearchTree.prototype.depthFirstLog = function(cb) {
     // determine if obj.right is null
       // if not null, call search function on obj.right
 }
+
+BinarySearchTree.prototype.breadthFirstLog = function (cb) {
+  var holder = [this];
+  // create holder array
+  for (var i = 0; i < holder.length; i++) {
+    cb(holder[i].value);
+    if (holder[i].left !== null) {
+      holder.push(holder[i].left);
+    }
+    if (holder[i].right !== null) {
+      holder.push(holder[i].right);
+    }
+  }
+  return holder;
+}
+
+
 /*
  * Complexity: What is the time complexity of the above functions?
  */

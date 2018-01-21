@@ -54,5 +54,21 @@ describe('binarySearchTree', function() {
     expect(binarySearchTree.insert(undefined)).to.equal('Invalid Input: Should be number');
     expect(binarySearchTree.insert(function test() {})).to.equal('Invalid Input: Should be number');
   });
+
+  it('should run a callback on every value from the node it called on and below', function() {
+    debugger;
+    var map = [];
+    var func = value => map.push(value);
+    binarySearchTree.insert(3);
+    binarySearchTree.insert(7);
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(4);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(1);
+    binarySearchTree.insert(9);
+    binarySearchTree.breadthFirstLog(func);
+    expect(map).to.eql([5, 3, 7, 2, 4, 6, 8, 1, 9]);
+  });
 });
  
